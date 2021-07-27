@@ -1,9 +1,16 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 
 const connectDB = require("./config/db");
 connectDB();
+
+const corsOptions = {
+  origin: process.env.ALLOWED_CLIENTS.split(","),
+};
+
+app.use(cors(corsOptions));
 
 const app = express();
 
